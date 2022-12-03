@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const ServiceFeedbackTemplate = new mongoose.Schema ({
     title: String,
     description: String,
-    
+    link: String
 })
 
 
