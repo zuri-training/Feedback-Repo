@@ -18,5 +18,6 @@ Backend technologies: Nodejs and express, Database: mongo, mongoose.
 Product Devices
 
 Product Accessiblity:
+Collaboration Processes:
 
 Acknowledgement:
