@@ -5,7 +5,7 @@ const ProductFeedbackTemplate = new mongoose.Schema({
         type: String,
         required: true,
     },
-    comment: String
+    comment: String,
 
 })
 
