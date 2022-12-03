@@ -11,8 +11,8 @@ Product Overview:
 Product Features:
 
 Technologies and Languages:
-Design: 
-Front end:
+Design:.........................
+Front end:............................
 Backend technologies: Nodejs and express, Database: mongo, mongoose.
 
 Product Devices
