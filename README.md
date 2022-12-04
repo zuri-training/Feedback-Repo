@@ -136,10 +136,10 @@ __FrontEnd Contributors__ <br/>
 </details>
 
 ## Relevant Links
-* Figma Design
-* FigJam Design
-* BackEnd Schema 
-* Design Documentation
+* Figma Design : https://www.figma.com/file/pjaxeJAGVfkzxLR8LexR6p/design-sketch?node-id=0%3A1&t=rqnaXp8NpKgxTR6z-0
+* FigJam Design : https://www.figma.com/file/BjpJ70s8WBJTu3r04KlwGA/userflow?t=wZInEvjZGtXdzLgJ-1
+* BackEnd Schema : https://docs.google.com/document/d/1iEwYQWCq2QI3edKRyKcLg1S8El-AnEYfAlyrD1_T0QY/edit?usp=sharing
+* Design Documentation : https://docs.google.com/document/d/1TrSFr_ug_VaDbdBIccfFuaHW8LJ4j4vN/edit?usp=sharing&ouid=117632144863159895498&rtpof=true&sd=true
 
 <details>
 
