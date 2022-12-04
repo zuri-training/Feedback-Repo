@@ -1,12 +1,20 @@
 const mongoose = require('mongoose');
-const ServiceFeedbackTemplate = new mongoose.Schema ({
+const ServiceFeedbackSchema = new mongoose.Schema ({
     title: String,
-    description: String
+    description: String,
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    },
 
+    updatedAt: {
+        type: Date,
+        default: Date.now()
+    }
 })
 
 
 
 
 
-module.exports = mongoose.model('ServiceFeedbackTemplate', ServiceFeedbackTemplate)
+module.exports = mongoose.model('ServiceFeedbackTemplate', ServiceFeedbackSchema)
