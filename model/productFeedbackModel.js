@@ -4,6 +4,7 @@ const ProductFeedbackSchema = new mongoose.Schema({
     Email: {
         type: String,
         required: true,
+        unique: true
     },
     comment: String,
     createdAt: {
