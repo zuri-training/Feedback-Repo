@@ -31,7 +31,7 @@ knowlegde, and to put into practice all that has been taught
 in the course of the programme.
 
 ## Project Description
-The web application is build on node js, a javascript framework which is used to run javascript outside the browser (server side). It is used due scalability, easy to use, speed and have a strong backend.
+The web application is build on node js, a javascript framework which is used to run javascript outside the browser (server side). It is used due to scalability, easy to use, speed and have a strong backend.
 
 ## Problem statement
 Running a Business as an entrepreneur or organiztion can be competitive, as the need to get into the head of your clients increases to ensure good quailty delivery of services. a client feedback form is used to ensure the business is heading towards the right direction, the platform for generating such form is what we'll be working on.
@@ -176,7 +176,7 @@ Structure is as follows:
 
 * Choice on Storage
 
-The use of mongodb in other to handle quick reliable data accesa and to aid performance
+The use of mongodb in other to handle quick reliable data access and to aid performance
 
 Tech Stack
 -Client:
