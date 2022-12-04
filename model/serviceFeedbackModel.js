@@ -17,4 +17,4 @@ const ServiceFeedbackSchema = new mongoose.Schema ({
 
 
 
-module.exports = mongoose.model('ServiceFeedbackTemplate', ServiceFeedbackSchema)
+module.exports = mongoose.model('ServiceFeedback', ServiceFeedbackSchema)

@@ -20,4 +20,4 @@ const ProductFeedbackSchema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('ProductFeedbackTemplate', ProductFeedbackSchema)
+module.exports = mongoose.model('ProductFeedback', ProductFeedbackSchema)

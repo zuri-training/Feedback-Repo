@@ -15,4 +15,4 @@ const eventFeedbackSchema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('event', eventFeedbackSchema)
+module.exports = mongoose.model('eventFeedback', eventFeedbackSchema)
