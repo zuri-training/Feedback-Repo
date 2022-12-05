@@ -31,7 +31,7 @@ knowlegde, and to put into practice all that has been taught
 in the course of the programme.
 
 ## Project Description
-The web application is build on node js, a javascript framework which is used to run javascript outside the browser (server side). It is used due scalability, easy to use, speed and have a strong backend.
+The web application is build on node js, a javascript framework which is used to run javascript outside the browser (server side). It is used due to scalability, easy to use, speed and have a strong backend.
 
 ## Problem statement
 Running a Business as an entrepreneur or organiztion can be competitive, as the need to get into the head of your clients increases to ensure good quailty delivery of services. a client feedback form is used to ensure the business is heading towards the right direction, the platform for generating such form is what we'll be working on.
@@ -136,10 +136,17 @@ __FrontEnd Contributors__ <br/>
 </details>
 
 ## Relevant Links
+<<<<<<< HEAD
 * Figma Design
 * FigJam Design
 * BackEnd Schema
 * Design Documentation
+=======
+* Figma Design : https://www.figma.com/file/pjaxeJAGVfkzxLR8LexR6p/design-sketch?node-id=0%3A1&t=rqnaXp8NpKgxTR6z-0
+* FigJam Design : https://www.figma.com/file/BjpJ70s8WBJTu3r04KlwGA/userflow?t=wZInEvjZGtXdzLgJ-1
+* BackEnd Schema : https://docs.google.com/document/d/1iEwYQWCq2QI3edKRyKcLg1S8El-AnEYfAlyrD1_T0QY/edit?usp=sharing
+* Design Documentation : https://docs.google.com/document/d/1TrSFr_ug_VaDbdBIccfFuaHW8LJ4j4vN/edit?usp=sharing&ouid=117632144863159895498&rtpof=true&sd=true
+>>>>>>> d71ef6bfe8efb44ac7746499a0e60a3a20254965
 
 <details>
 
@@ -176,7 +183,7 @@ Structure is as follows:
 
 * Choice on Storage
 
-The use of mongodb in other to handle quick reliable data accesa and to aid performance
+The use of mongodb in other to handle quick reliable data access and to aid performance
 
 Tech Stack
 -Client:
