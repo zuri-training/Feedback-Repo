@@ -34,6 +34,14 @@ const userSchema = new mongoose.Schema({
                 throw new Error('"password" can not be used')
             }
         }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now()
     }
 })
 
