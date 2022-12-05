@@ -138,7 +138,7 @@ __FrontEnd Contributors__ <br/>
 ## Relevant Links
 * Figma Design
 * FigJam Design
-* BackEnd Schema 
+* BackEnd Schema
 * Design Documentation
 
 <details>
