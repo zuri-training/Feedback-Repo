@@ -6,7 +6,6 @@ const ServiceFeedbackSchema = new mongoose.Schema ({
         type: Date,
         default: Date.now()
     },
-    link: String,
     updatedAt: {
         type: Date,
         default: Date.now()
