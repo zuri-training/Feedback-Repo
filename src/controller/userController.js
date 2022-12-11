@@ -4,20 +4,24 @@ const User = require('../models/user')
 
 
 const userRegister = async (req, res) => {
-	const { username, password: plainTextPassword } = req.body
+	const { firstname, lastname, email, password: plainTextPassword } = req.body
 
-	if (!username || typeof username !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid username' })
+	if (!firstname || typeof firstname !== 'string') {
+		return res.json({ status: 'error', error: 'Invalid firstname' })
 	}
 
-	if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid password' })
+	if (!lastname || typeof lastname !== 'string') {
+		return res.json({ status: 'error', error: 'Invalid lastname' })
+	}
+
+	if (!email || typeof email !== 'string') {
+		return res.json({ status: 'error', error: 'Invalid email' })
 	}
 
 	if (plainTextPassword.length < 5) {
 		return res.json({
 			status: 'error',
-			error: 'Password too small. Should be atleast 6 characters'
+			error: 'Password too small. Should be at least 6 characters'
 		})
 	}
 
@@ -25,14 +29,16 @@ const userRegister = async (req, res) => {
 
 	try {
 		const response = await User.create({
-			username,
+			firstname,
+			lastname,
+			email,
 			password
 		})
 		console.log('User created successfully: ', response)
 	} catch (error) {
 		if (error.code === 11000) {
 			// duplicate key
-			return res.json({ status: 'error', error: 'Username already in use' })
+			return res.json({ status: 'error', error: 'email already in use' })
 		}
 		throw error
 	}
@@ -41,20 +47,20 @@ const userRegister = async (req, res) => {
 }
 
 const userLogin = async (req, res) => {
-	const { username, password } = req.body
-	const user = await User.findOne({ username }).lean()
+	const { email, password } = req.body
+	const user = await User.findOne({ email }).lean()
 
 	if (!user) {
-		return res.json({ status: 'error', error: 'Invalid username/password' })
+		return res.json({ status: 'error', error: 'Invalid email/password' })
 	}
 
 	if (await bcrypt.compare(password, user.password)) {
-		// the username, password combination is successful
+		// the email, password combination is successful
 
 		const token = jwt.sign(
 			{
 				id: user._id,
-				username: user.username
+				email: user.email
 			},
 			process.env.JWT_SECRET
 		)
@@ -62,7 +68,7 @@ const userLogin = async (req, res) => {
 		return res.json({ status: 'ok', data: token })
 	}
 
-	res.json({ status: 'error', error: 'Invalid username/password' })
+	res.json({ status: 'error', error: 'Invalid email/password' })
 }
 
 const changePassword = async (req, res) => {
