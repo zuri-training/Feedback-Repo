@@ -1,7 +1,7 @@
 {
   "name": "feedback-repo",
   "version": "1.0.0",
-  "description": "",
+  "description": "feedback repo is a feedback generator called poma",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/zuri-training/Feedback-Repo.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "TeamPelicanw2",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/zuri-training/Feedback-Repo/issues"
