@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const eventFeedbackSchema = new mongoose.Schema({
-    rating: Number,
+    Rating: Number,
     comment: String,
     createdAt: {
         type: Date,
