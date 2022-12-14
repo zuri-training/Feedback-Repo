@@ -25,7 +25,7 @@
     </header>
     <section>
         <a href="#" class="icon"><img src="/img/arrow.svg" alt=""></a>
-        <form action="">
+        <form id="login">
             <div class="container">
                 <div class="wrapper">
                     <div class="intro">Sign in</div>
@@ -35,20 +35,14 @@
                     <div class="mail">
                         <input class="intro4" type="email" id="email" name="email" placeholder="johndeo@gmail.com"
                             required>
-                        <input class="intro5" type="google" id="google" name="google" placeholder="Sign in with Google"
-                            required>
                     </div>
                     <p class="intro8">Password</p>
                     <div class="pass">
                         <input class="intro6" type="password" id="password" name="password" placeholder="***********"
                             required>
-                        <input class="intro7" type="facebook" id="facebook" name="facebook"
-                            placeholder="Sign in with Facebook" required>
                     </div>
                     <div class="log">
-                        <a class="intro9" href="#">Login</a>
-                        <input class="intro10" type="apple" id="apple" name="apple"
-                            placeholder="Sign in with Apple Acct" required>
+                        <input type="submit" class="intro9" value="Login">
                     </div>
                     <div class="remind">
                         <a class="ret" href="#">Forgot Password?</a>
@@ -78,6 +72,34 @@
             <div>Poma Inc.</div>
         </div>
     </footer>
+    <script>
+        const form = document.getElementById('login')
+        form.addEventListener('submit', login)
+
+        async function login(event){
+            event.preventDefault()
+            const email = document.getElementById('email').value
+            const password = document.getElementById('password').value
+
+            const result = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            }).then((res) => res.json())
+
+            if(result.status === 'ok'){
+                console.log('Got the token: ', result.data)
+                alert('Success')
+            }else{
+                alert(result.error)
+            }
+        }
+    </script>
 </body>
 
 </html>
