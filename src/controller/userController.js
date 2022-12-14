@@ -10,10 +10,6 @@ const userRegister = async (req, res) => {
 		return res.json({ status: 'error', error: 'Invalid firstname' })
 	}
 
-	if (!lastname || typeof lastname !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid lastname' })
-	}
-
 	if (!email || typeof email !== 'string') {
 		return res.json({ status: 'error', error: 'Invalid email' })
 	}
@@ -30,7 +26,6 @@ const userRegister = async (req, res) => {
 	try {
 		const response = await User.create({
 			firstname,
-			lastname,
 			email,
 			password
 		})

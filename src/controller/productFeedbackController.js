@@ -1,4 +1,4 @@
-const ProductFeedbackSchema = require('../../src/models/productFeedbackFormModel')
+const ProductFeedbackSchema = require('..//models/productFeedbackFormModel')
 
 //get all the product feedback form.
 const getAllProductFeedBackForms = async (request, response) => {

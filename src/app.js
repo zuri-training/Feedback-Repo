@@ -1,12 +1,15 @@
 const path = require('path')
 const express = require('express')
 const app = express();
+const dotenv = require('dotenv')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const userRouter = require('./routers/userRouter')
 const productFeedbackRoute = require('./routers/productFeedbackRoute');
 const eventFeedbackRoute = require('./routers/eventFeedbackRoute');
 const serviceFeedbackRoute = require('./routers/serviceFeedbackRoute')
+const connectDB = require('./config/mongoose')
+
 
 // log requests
 app.use(morgan('tiny'))
@@ -15,17 +18,21 @@ app.set('view engine', "ejs")
 //defining path for express to serve our views
 const publicPath = path.join(__dirname, 'public')  // I removed ../ from the from the public: '../public to serve the file in public'
 const viewsPath = path.join(__dirname, './views')
-  
+
+// connecting to config file
+dotenv.config({path:'config.env'})
 
 //setup for our views location
-
 app.set('views', viewsPath)
 
 
 // Setup static directory to serve
 app.use(express.static(publicPath))
 
+// mongoDB connection
+connectDB()
 
+// parse requests to bodyParser
 app.use(bodyParser.json())
 
 app.use(userRouter);

@@ -25,7 +25,7 @@
     </header>
     <section>
         <a href="#" class="icon"><img src="/img/arrow.svg" alt=""></a>
-        <form action="">
+        <form id="reg-form">
             <div class="container">
                 <div class="wrapper">
                     <div class="intro">Sign Up</div>
@@ -33,31 +33,27 @@
                     <div class="intro3">with us</div>
                     <p class="intro1">Full Name</p>
                     <div class="name">
-                        <input class="intro10" type="email" id="email" name="email" placeholder="John Deo" required>
+                        <input class="intro10" type="text" id="fullname" name="fullname" placeholder="John Deo" required>
                         <input class="intro11" type="google" id="google" name="google" placeholder="Sign in with Google"
-                            required>
+                            >
                     </div>
                     <p class="intro1">Email</p>
                     <div class="mail">
                         <input class="intro4" type="email" id="email" name="email" placeholder="johndeo@gmail.com"
                             required>
                         <input class="intro5" type="facebook" id="facebook" name="facebook"
-                            placeholder="Sign in with Facebook" required>
+                            placeholder="Sign in with Facebook" >
                     </div>
                     <p class="intro8">Create Password</p>
                     <div class="pass">
-                        <input class="intro6" type="password" id="password" name="password" placeholder="***********"
+                        <input class="intro6" type="text" id="password" name="password" placeholder="***********"
                             required>
                         <input class="intro7" type="apple" id="apple" name="apple"
-                            placeholder="Sign in with Apple Account" required>
+                            placeholder="Sign in with Apple Account" >
                     </div>
-                    <p class="intro8">Confirm Password</p>
                     <div class="new">
-                        <input class="intro6" type="password" id="password" name="password" placeholder="***********"
-                            required>
-
                         <div class="log">
-                            <a class="intro9" href="#">Register</a>
+                            <input type="submit" value="Submit" class="intro9">
                         </div>
                         <div class="remind">
                             <div class="ready">Already a member?</div>
@@ -88,6 +84,33 @@
             <div>Poma Inc.</div>
         </div>
     </footer>
+
+    <script>
+        const form = document.getElementById('reg-form')
+        form.addEventListener('submit', registerUser)
+
+        async function registerUser(event){
+            event.preventDefault()
+            const fullname = document.getElementById('fullname').value
+            const email = document.getElementById('email').value
+            const password = document.getElementById('password').value
+
+            const result = await fetch('api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    fullname,
+                    email,
+                    password
+                })
+            }).then((res) => res.json())
+
+            console.log(result)
+        }
+    </script>
+
 </body>
 
 </html>
