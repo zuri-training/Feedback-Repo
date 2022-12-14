@@ -8,7 +8,8 @@ const userRouter = require('./routers/userRouter')
 const productFeedbackRoute = require('./routers/productFeedbackRoute');
 const eventFeedbackRoute = require('./routers/eventFeedbackRoute');
 const serviceFeedbackRoute = require('./routers/serviceFeedbackRoute')
-const connectDB = require('./config/mongoose')
+const connectDB = require('./config/mongoose');
+// const { default: isEmail } = require('validator/lib/isEmail');
 
 
 // log requests
@@ -43,14 +44,25 @@ app.use('/api/v1/eventfeedback/:id', eventFeedbackRoute)
 app.use('/api/v1/servicefeedback', serviceFeedbackRoute)
 app.use('/api/v1/servicefeedback/:id', serviceFeedbackRoute)
 
-
 app.get('/', (request, response) => {
     response.status(200).render('index.ejs')
 })
 
 app.get('/feedback', (request, response) => {
     response.status(200).render('feedback.ejs')
+    
 })
+
+app.get('/detailfeedback', (request, response) => {
+    response.status(200).render('detailProductFeedback.ejs')
+    
+})
+
+app.post('/detailfeedback', (request, response) => {
+   
+    
+})
+
 
 app.get('/signup', (request, response) => {
     response.status(200).render('signup.ejs')
@@ -75,6 +87,8 @@ app.get('/formresponsepage', (request, response) => {
 })
 
 
+
+
 // app.get ('*', (req, res) => {
 //     res.render('404',{
 //         title: '404 page',
@@ -85,7 +99,7 @@ app.get('/formresponsepage', (request, response) => {
 module.exports = app;
 
 //Pending to do lists:
-// Connect to the database.
+// Connect to the database: Done
 // Link the authentication.
 // Host our project
 //Connect each feedback template to the API to enable user to perform Crud operation

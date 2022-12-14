@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/detailProductFeedback.css">
+    <title>Detail Product Feedback Page</title>
+</head>
+<body>
+    <div class="card"
+                style="width: 24rem; height: 30rem; border-radius: 20px; background: linear-gradient(180deg, rgba(247, 174, 230, 0.8) 0%, rgba(239, 221, 62, 0.104) 100%);">
+                <div class="card-body">
+                    <h5 class="card-title"
+                        style="color: #9F9D93; border-radius: 8px; font-style: italic; padding-top:5%;font-size: 18px; padding-left: 66%;">
+                        LOGO HERE</h5>
+                    <a href="#" class="btn btn-primary"
+                        style=" margin-top: 10%; border: 1px solid #7D2B2B; background: #FCFBF8;color: #9F9D93; color: #9F9D93;padding-right: 18%;">Name</a>
+                    <a href="#" class="btn btn-primary"
+                        style=" margin-top: 10%; border: 1px solid #7D2B2B; background: #FCFBF8;color: #9F9D93; border-radius: 8px;padding-right: 37%; margin-left: 8%;">Email</a>
+                    <a href="#" class="btn btn-primary"
+                        style=" color: #4F4E4A; margin-top:10%; padding-bottom: 18%; padding-left: 3%; padding-right: 30%; font-size: 16px; border: 1px solid #7D2B2B; background: #FCFBF8;color: #9F9D93;border-radius: 8px">Feedback</a>
+                    <img src="/icons/arrow.svg" style="padding-top: 10%;" alt="">
+                </div>
+            </div>
+
+            <form action="/detailfeedback" method="POST" id="productFeedback">
+                <label for="nameInput">
+                    <input type="text" id="nameInput" name="name"></label>
+
+                    <label for="emailInput">
+                        <input type="email" id="emailInput" name="email"></label>
+                        <label for="commentInput">
+                            <input type="text" id="commentInput" name="name"></label>
+                            <button>Create Product Form</button>
+            </form>
+</body>
+</html>
