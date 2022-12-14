@@ -74,14 +74,6 @@ app.get('/formresponsepage', (request, response) => {
     response.render('formresponsepage.ejs')
 })
 
-
-// app.get ('*', (req, res) => {
-//     res.render('404',{
-//         title: '404 page',
-//         errorMessage: 'page not found'
-//     })
-// })
-
 module.exports = app;
 
 //Pending to do lists:

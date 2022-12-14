@@ -6,7 +6,7 @@ const validator = require('validator')
 
 //user model
 const userSchema = new mongoose.Schema({
-    firstName: {
+    fullname: {
         type: String,
         trim: true
     },

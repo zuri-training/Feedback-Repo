@@ -46,7 +46,7 @@
                     </div>
                     <p class="intro8">Create Password</p>
                     <div class="pass">
-                        <input class="intro6" type="text" id="password" name="password" placeholder="***********"
+                        <input class="intro6" type="password" id="password" name="password" placeholder="***********"
                             required>
                         <input class="intro7" type="apple" id="apple" name="apple"
                             placeholder="Sign in with Apple Account" >
@@ -107,7 +107,12 @@
                 })
             }).then((res) => res.json())
 
-            console.log(result)
+            if(result.status === 'ok'){
+                alert("Success")
+                window.location.href = '/login';
+            }else{
+                alert(result.error)
+            }
         }
     </script>
 
