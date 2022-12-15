@@ -13,8 +13,12 @@ const getAllProductFeedBackForms = async (request, response) => {
  //  create a new product feedback form.
 const createProductFeedbackForm = async (request, response) => {
     try {
-        const feedback = await ProductFeedbackSchema.create(request.body)
-         response.status(201).json({feedback})
+        const feedback = await ProductFeedbackSchema.create({
+            Name: request.body.name,
+            Email: request.body.email,
+            Comment: request.body.comment
+        })
+         response.status(201).send((`Thank you for complete the product feedback form. We sincerely appreciate your feedback and promise to improve on our product`))
         
     } catch (error) {
         response.status(404).json({message: error})

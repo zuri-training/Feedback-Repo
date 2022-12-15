@@ -6,7 +6,7 @@ const ProductFeedbackSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    comment: String,
+    Comment: String,
     createdAt: {
         type: Date,
         default: Date.now()

@@ -13,8 +13,12 @@ const getAllServiceFeedBackForms = async (request, response) => {
  //  create a new service feedback form.
 const createServiceFeedbackForm = async (request, response) => {
     try {
-        const serviceFeedback = await ServiceFeedbackSchema.create(request.body)
-        response.status(201).json({serviceFeedback})
+        const serviceFeedback = await ServiceFeedbackSchema.create(
+            {
+                Title: request.body.title,
+                Description: request.body.description
+            })
+        response.status(201).send('Thank you for your service feedback')
     } catch (error) {
         response.status(404).json({message: error})
     }

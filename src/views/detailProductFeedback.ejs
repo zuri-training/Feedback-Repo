@@ -8,31 +8,20 @@
     <title>Detail Product Feedback Page</title>
 </head>
 <body>
-    <div class="card"
-                style="width: 24rem; height: 30rem; border-radius: 20px; background: linear-gradient(180deg, rgba(247, 174, 230, 0.8) 0%, rgba(239, 221, 62, 0.104) 100%);">
-                <div class="card-body">
-                    <h5 class="card-title"
-                        style="color: #9F9D93; border-radius: 8px; font-style: italic; padding-top:5%;font-size: 18px; padding-left: 66%;">
-                        LOGO HERE</h5>
-                    <a href="#" class="btn btn-primary"
-                        style=" margin-top: 10%; border: 1px solid #7D2B2B; background: #FCFBF8;color: #9F9D93; color: #9F9D93;padding-right: 18%;">Name</a>
-                    <a href="#" class="btn btn-primary"
-                        style=" margin-top: 10%; border: 1px solid #7D2B2B; background: #FCFBF8;color: #9F9D93; border-radius: 8px;padding-right: 37%; margin-left: 8%;">Email</a>
-                    <a href="#" class="btn btn-primary"
-                        style=" color: #4F4E4A; margin-top:10%; padding-bottom: 18%; padding-left: 3%; padding-right: 30%; font-size: 16px; border: 1px solid #7D2B2B; background: #FCFBF8;color: #9F9D93;border-radius: 8px">Feedback</a>
-                    <img src="/icons/arrow.svg" style="padding-top: 10%;" alt="">
-                </div>
-            </div>
-
-            <form action="/detailfeedback" method="POST" id="productFeedback">
-                <label for="nameInput">
-                    <input type="text" id="nameInput" name="name"></label>
-
-                    <label for="emailInput">
-                        <input type="email" id="emailInput" name="email"></label>
-                        <label for="commentInput">
-                            <input type="text" id="commentInput" name="name"></label>
-                            <button>Create Product Form</button>
-            </form>
+             <h2>Product Feedback Form</h2>
+            <form action="/api/v1/productfeedback" id="register-form" method="POST">
+                <section class="input-control">
+                <label for="nameInput"></label><input id="nameInput" type="text" placeholder="Enter your full name" name="name"><br> 
+              </section>
+                <section class="input-control">
+                <label for="emailInput"></label> <input id="emailInput" type="email" placeholder="Enter your email address" name="email"><br>
+              </section>
+  
+                <label for="commentInput">
+                <textarea name="comment" id="commentInput" cols="130" rows="10"></textarea>
+                </label>
+                <button type="submit" id="claim">Create Product Feedback</button>
+                <p id="register-second-text">By clicking the button, you agreeing to our <span id="terms"><strong>Terms and Serivces</strong></span></p>
+              </form>
 </body>
 </html>

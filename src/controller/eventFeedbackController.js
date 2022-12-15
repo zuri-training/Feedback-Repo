@@ -13,8 +13,11 @@ const getAllEventFeedBackForms = async (request, response) => {
  //  create a new event feedback form.
 const createEventFeedbackForm = async (request, response) => {
     try {
-        const feedback = await EventFeedbackSchema.create(request.body)
-        response.status(201).json({feedback})
+        const feedback = await EventFeedbackSchema.create({
+            Rating: request.body.title,
+            Comment: request.body.comment
+        })
+        response.status(201).send('Thank you for your event feedback message')
     } catch (error) {
         response.status.json({message: error})
     }

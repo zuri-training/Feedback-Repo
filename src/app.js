@@ -50,17 +50,18 @@ app.get('/', (request, response) => {
 
 app.get('/feedback', (request, response) => {
     response.status(200).render('feedback.ejs')
-    
 })
 
-app.get('/detailfeedback', (request, response) => {
-    response.status(200).render('detailProductFeedback.ejs')
-    
+app.get('/detailproductfeedback', (request, response) => {
+    response.status(200).render('detailproductfeedback.ejs')
 })
 
-app.post('/detailfeedback', (request, response) => {
-   
-    
+app.get('/detailservicefeedback', (request, response) => {
+    response.status(200).render('detailservicefeedback.ejs') 
+})
+
+app.get('/detaileventfeedback', (request, response) => {
+    response.status(200).render('detaileventfeedback.ejs') 
 })
 
 
