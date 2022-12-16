@@ -1,6 +1,6 @@
 ## Overview
 *  A Feedback form generating platform where users and developers can create feedback forms to be embedded on their platforms
-* PROJECT NAME: `Feedback Gen`
+* PROJECT NAME: `Poma Feedback Gen`
 * Project languages: 
 > * Backend: `JavaScript`,`Node.js(JavaScript)`
 > * Frontend: `HTML5`, `CSS3`,`AJAX`. `Javascript`, `Bootstrap`
@@ -130,8 +130,6 @@ __BackEnd Contributors__ <br/>
 __FrontEnd Contributors__ <br/>
 * Ramat Ajakaye
 
-* Isaac Muvughe
-
 
 </details>
 
@@ -146,6 +144,7 @@ __FrontEnd Contributors__ <br/>
 * FigJam Design : https://www.figma.com/file/BjpJ70s8WBJTu3r04KlwGA/userflow?t=wZInEvjZGtXdzLgJ-1
 * BackEnd Schema : https://docs.google.com/document/d/1iEwYQWCq2QI3edKRyKcLg1S8El-AnEYfAlyrD1_T0QY/edit?usp=sharing
 * Design Documentation : https://docs.google.com/document/d/1TrSFr_ug_VaDbdBIccfFuaHW8LJ4j4vN/edit?usp=sharing&ouid=117632144863159895498&rtpof=true&sd=true
+* hosting link: http://feedbackgenerator.com.ng
 >>>>>>> d71ef6bfe8efb44ac7746499a0e60a3a20254965
 
 <details>
