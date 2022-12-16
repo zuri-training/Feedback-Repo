@@ -130,8 +130,6 @@ __BackEnd Contributors__ <br/>
 __FrontEnd Contributors__ <br/>
 * Ramat Ajakaye
 
-* Isaac Muvughe
-
 
 </details>
 
