@@ -2,20 +2,24 @@ const path = require('path')
 const express = require('express')
 const app = express();
 const dotenv = require('dotenv')
+const session = require('express-session')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const userRouter = require('./routers/userRouter')
+const hbs = require('hbs')
+const feedbackformRoute = require('./routers/feedBackFormroute')
 const productFeedbackRoute = require('./routers/productFeedbackRoute');
 const eventFeedbackRoute = require('./routers/eventFeedbackRoute');
 const serviceFeedbackRoute = require('./routers/serviceFeedbackRoute')
 const connectDB = require('./config/mongoose');
+const isAuth = require('./middleware/auth')
 // const { default: isEmail } = require('validator/lib/isEmail');
 
 
 // log requests
 app.use(morgan('tiny'))
 app.use(express.urlencoded({extended: true}))
-app.set('view engine', "ejs")
+app.set('view engine', "hbs")
 //defining path for express to serve our views
 const publicPath = path.join(__dirname, 'public')  // I removed ../ from the from the public: '../public to serve the file in public'
 const viewsPath = path.join(__dirname, './views')
@@ -33,10 +37,19 @@ app.use(express.static(publicPath))
 // mongoDB connection
 connectDB()
 
+//setting up node to use session to authenticate user
+app.use(session({
+    secret: process.env.SESS_SECRET,
+    cookie: { maxAge: 3600000 },
+    resave: true,
+    saveUninitialized: true,
+}))
+
 // parse requests to bodyParser
 app.use(bodyParser.json())
 
 app.use(userRouter);
+app.use(feedbackformRoute);
 app.use('/api/v1/productfeedback', productFeedbackRoute)
 app.use('/api/v1/productfeedback/:id', productFeedbackRoute)
 app.use('/api/v1/eventfeedback', eventFeedbackRoute)
@@ -45,46 +58,37 @@ app.use('/api/v1/servicefeedback', serviceFeedbackRoute)
 app.use('/api/v1/servicefeedback/:id', serviceFeedbackRoute)
 
 app.get('/', (request, response) => {
-    response.status(200).render('index.ejs')
+    response.status(200).render('index')
 })
 
-app.get('/feedback', (request, response) => {
-    response.status(200).render('feedback.ejs')
+app.get('/feedback', isAuth, (request, response) => {
+    response.status(200).render('feedback')
 })
 
-app.get('/detailproductfeedback', (request, response) => {
-    response.status(200).render('detailproductfeedback.ejs')
+app.get('/detailproductfeedback', isAuth, (request, response) => {
+    response.status(200).render('detailproductfeedback')
 })
 
-app.get('/detailservicefeedback', (request, response) => {
-    response.status(200).render('detailservicefeedback.ejs') 
+app.get('/detailservicefeedback', isAuth, (request, response) => {
+    response.status(200).render('detailservicefeedback') 
 })
 
-app.get('/detaileventfeedback', (request, response) => {
-    response.status(200).render('detaileventfeedback.ejs') 
+app.get('/detaileventfeedback', isAuth, (request, response) => {
+    response.status(200).render('detaileventfeedback') 
 })
 
+app.get('/profile', isAuth, (request, response) => {
 
-app.get('/signup', (request, response) => {
-    response.status(200).render('signup.ejs')
-})
-
-
-app.get('/login', (request, response) => {
-    response.render('login.ejs')
-})
-
-app.get('/profile', (request, response) => {
-    response.render('profile.ejs')
+    response.render('profile')
 })
 
 app.get('/customform', (request, response) => {
-    response.render('customform.ejs')
+    response.render('customform')
 })
 
 
-app.get('/formresponsepage', (request, response) => {
-    response.render('formresponsepage.ejs')
+app.get('/formresponsepage', isAuth, (request, response) => {
+    response.render('formresponsepage')
 })
 
 

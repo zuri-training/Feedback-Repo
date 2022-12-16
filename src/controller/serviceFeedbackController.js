@@ -1,4 +1,5 @@
 const ServiceFeedbackSchema = require('../../src/models/serviceFeedbackFormModel')
+const serviceResponseShema = require('../models/serviceResponseModel')
 
 //get all the service feedback form.
 const getAllServiceFeedBackForms = async (request, response) => {
@@ -13,12 +14,20 @@ const getAllServiceFeedBackForms = async (request, response) => {
  //  create a new service feedback form.
 const createServiceFeedbackForm = async (request, response) => {
     try {
-        const serviceFeedback = await ServiceFeedbackSchema.create(
+        let id = request.session.user._id
+        const serviceFeedback = await ServiceFeedbackSchema.findOne({owner: id })
+        
+        if(!serviceFeedback) {
+            console.error('form not found')
+        }
+        
+        const userResp = await serviceResponseShema.create(
             {
                 Title: request.body.title,
-                Description: request.body.description
+                Description: request.body.description,
+                formId: serviceFeedback._id,
             })
-        response.status(201).send('Thank you for your service feedback')
+        response.status(201).redirect('/profile')
     } catch (error) {
         response.status(404).json({message: error})
     }

@@ -1,4 +1,5 @@
-const EventFeedbackSchema = require('../../src/models/eventFeedbackFormModel')
+const EventFeedbackSchema = require('../models/eventFeedbackFormModel')
+const eventResponseShema = require('../models/eventResponseModel')
 
 //get all the event feedback form.
 const getAllEventFeedBackForms = async (request, response) => {
@@ -10,16 +11,31 @@ const getAllEventFeedBackForms = async (request, response) => {
     }
 }
 
- //  create a new event feedback form.
-const createEventFeedbackForm = async (request, response) => {
+ //  storing participant response.
+const userRes = async (request, response) => {
+    console.log(request.body)
     try {
-        const feedback = await EventFeedbackSchema.create({
-            Rating: request.body.title,
-            Comment: request.body.comment
+        
+        let id = request.session.user._id
+        const eventFeedback = await EventFeedbackSchema.findOne({owner: id })
+
+        if(!eventFeedback) {
+            console.error('form not found')
+        }
+
+        const userResp = new eventResponseShema({
+            ...request.body,
+            formId: eventFeedback._id
         })
-        response.status(201).send('Thank you for your event feedback message')
+
+
+        await userResp.save();
+
+        console.log(userResp)
+
+        response.status(201).redirect('/profile')
     } catch (error) {
-        response.status.json({message: error})
+        console.log(error)
     }
     
 }
@@ -73,7 +89,7 @@ const deleteEventFeedbackForm = async (request, response) => {
 
 module.exports = {
     getAllEventFeedBackForms,
-    createEventFeedbackForm,
+    userRes,
     getSingleEventFeedbackForm,
     updateEventFeedbackForm,
     deleteEventFeedbackForm

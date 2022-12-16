@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signup page</title>
-    <link rel="stylesheet" href="/css/signup.css">
+    <title>signin page</title>
+    <link rel="stylesheet" href="/css/signin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 
@@ -25,43 +25,31 @@
     </header>
     <section>
         <a href="#" class="icon"><img src="/img/arrow.svg" alt=""></a>
-        <form id="reg-form">
+        <form id="login" action="/login" method="post">
             <div class="container">
                 <div class="wrapper">
-                    <div class="intro">Sign Up</div>
-                    <div class="intro2">Hey, Enter your details to get an account</div>
-                    <div class="intro3">with us</div>
-                    <p class="intro1">Full Name</p>
-                    <div class="name">
-                        <input class="intro10" type="text" id="fullname" name="fullname" placeholder="John Deo" required>
-                        <input class="intro11" type="google" id="google" name="google" placeholder="Sign in with Google"
-                            >
-                    </div>
+                    <div class="intro">Sign in</div>
+                    <div class="intro2">Hey, Enter your details to get access to your</div>
+                    <div class="intro3">account</div>
                     <p class="intro1">Email</p>
                     <div class="mail">
                         <input class="intro4" type="email" id="email" name="email" placeholder="johndeo@gmail.com"
                             required>
-                        <input class="intro5" type="facebook" id="facebook" name="facebook"
-                            placeholder="Sign in with Facebook" >
                     </div>
-                    <p class="intro8">Create Password</p>
+                    <p class="intro8">Password</p>
                     <div class="pass">
                         <input class="intro6" type="password" id="password" name="password" placeholder="***********"
                             required>
-                        <input class="intro7" type="apple" id="apple" name="apple"
-                            placeholder="Sign in with Apple Account" >
                     </div>
-                    <div class="new">
-                        <div class="log">
-                            <input type="submit" value="Submit" class="intro9">
-                        </div>
-                        <div class="remind">
-                            <div class="ready">Already a member?</div>
-                            <a class="ret" href="#">Log in</a>
-                        </div>
+                    <div class="log">
+                        <input type="submit" class="intro9" value="Login">
                     </div>
-
+                    <div class="remind">
+                        <a class="ret" href="/change-password">Forgot Password?</a>
+                    </div>
                 </div>
+
+            </div>
         </form>
     </section>
     <footer>
@@ -75,7 +63,7 @@
         <div class="details2">
             <div><img src="/img/footerinstagram.svg" alt=""></div>
             <div><img src="/img/footerfacebook.svg" alt=""></div>
-            <div class="ment"><img src="/img/footertwitter.svg" alt=""></div>
+            <div  class="ment"><img src="/img/footertwitter.svg" alt=""></div>
             <div><img src="/img/footermail.svg" alt=""></div>
         </div>
         <div class="details3">
@@ -84,38 +72,35 @@
             <div>Poma Inc.</div>
         </div>
     </footer>
+    {{!-- <script>
+        const form = document.getElementById('login')
+        form.addEventListener('submit', login)
 
-    <script>
-        const form = document.getElementById('reg-form')
-        form.addEventListener('submit', registerUser)
-
-        async function registerUser(event){
+        async function login(event){
             event.preventDefault()
-            const fullname = document.getElementById('fullname').value
             const email = document.getElementById('email').value
             const password = document.getElementById('password').value
 
-            const result = await fetch('api/register', {
+            const result = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    fullname,
                     email,
                     password
                 })
             }).then((res) => res.json())
 
             if(result.status === 'ok'){
-                alert("Success")
-                window.location.href = '/login';
+                // console.log('Got the token: ', result.data)
+                alert('Success')
+                window.location.href = '/profile';
             }else{
                 alert(result.error)
             }
         }
-    </script>
-
+    </script> --}}
 </body>
 
 </html>

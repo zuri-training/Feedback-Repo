@@ -1,4 +1,5 @@
-const ProductFeedbackSchema = require('..//models/productFeedbackFormModel')
+const ProductFeedbackSchema = require('../models/productFeedbackFormModel')
+const productResponseShema = require('../models/eventResponseModel')
 
 //get all the product feedback form.
 const getAllProductFeedBackForms = async (request, response) => {
@@ -13,12 +14,20 @@ const getAllProductFeedBackForms = async (request, response) => {
  //  create a new product feedback form.
 const createProductFeedbackForm = async (request, response) => {
     try {
-        const feedback = await ProductFeedbackSchema.create({
+        let id = request.session.user._id
+        const productFeedback = await ProductFeedbackSchema.findOne({owner: id })
+
+        if(!productFeedback) {
+            console.error('form not found')
+        }
+
+        const feedback = await productResponseShema.create({
             Name: request.body.name,
             Email: request.body.email,
-            Comment: request.body.comment
+            Comment: request.body.comment,
+            formId: productFeedback,
         })
-         response.status(201).send((`Thank you for complete the product feedback form. We sincerely appreciate your feedback and promise to improve on our product`))
+         response.status(201).redirect('/profile')
         
     } catch (error) {
         response.status(404).json({message: error})
