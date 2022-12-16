@@ -51,8 +51,10 @@ const userLogin = async (req, res) => {
 		return res.json({ status: 'error', error: 'Invalid email/password for user' })
 	}
 
-	if (await bcrypt.compare(password, user.password)) {
+	const signin = (await bcrypt.compare(password, user.password))
 		// the email, password combination is successful
+
+		if(!signin){
 
 		const token = jwt.sign(
 			{
