@@ -1,6 +1,6 @@
 ## Overview
 *  A Feedback form generating platform where users and developers can create feedback forms to be embedded on their platforms
-* PROJECT NAME: `Feedback Gen`
+* PROJECT NAME: `Poma Feedback Gen`
 * Project languages: 
 > * Backend: `JavaScript`,`Node.js(JavaScript)`
 > * Frontend: `HTML5`, `CSS3`,`AJAX`. `Javascript`, `Bootstrap`
