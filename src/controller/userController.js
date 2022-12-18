@@ -1,4 +1,12 @@
 const User = require('../models/user')
+const EventFeedback = require('../models/eventFeedbackFormModel')
+const eventResponse = require('../models/eventResponseModel')
+const ServiceFeedback = require('../models/serviceFeedbackFormModel')
+const serviceResponse = require('../models/serviceResponseModel')
+const ProductFeedback = require('../models/productFeedbackFormModel')
+const productResponse = require('../models/eventResponseModel')
+// const eventFeedbackFormModel = require('../models/eventFeedbackFormModel')
+
 
 // const JWT_SECRET='sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
@@ -7,7 +15,7 @@ const get_signup = (request, response) => {
 }
 
 const post_signup = async (request, response) => {
-	console.log(req.body)
+	// console.log(req.body)
     try {
         const user = new User(request.body)
         await user.save(function(err, user) {
@@ -40,112 +48,120 @@ const post_login = async (request, response) => {
     }
 }
 
+const get_profile = async (request, response) => {
+    let allFeed
+    let feedLen
+    try {
+
+        const event = await EventFeedback.find({ owner: request.session.user._id })
+        
+
+        if(!event){
+            console.log('empty event')
+        }else(
+            
+            allFeed = event
+        )
+
+        const service = await ServiceFeedback.find({ owner: request.session.user._id })
+
+        if(!service){
+            console.log('empty event')
+        }else(
+            allFeed.push(...service)
+        )
+
+        const product = await ProductFeedback.find({ owner: request.session.user._id })
+
+        if(!product){
+            console.log('empty event')
+        }else(
+            allFeed.push(...product)
+        )
 
 
+        feedLen = allFeed.length
 
-// const userRegister = async (req, res) => {
-// 	const { fullname, email, password: plainTextPassword } = req.body
+        if(feedLen === 0) {
+            response.redirect('/profile&%0')
+        }
 
-// 	if (!fullname || typeof fullname !== 'string') {
-// 		return res.json({ status: 'error', error: 'Invalid fullname' })
-// 	}
+        let user = request.session.user
+        // console.log(allFeed)
+        response.render('profile' , {feeds: {allFeed}, user})
+    } catch (error) {
+        console.log(error)
+    }
 
-// 	if (!email || typeof email !== 'string') {
-// 		return res.json({ status: 'error', error: 'Invalid email' })
-// 	}
+//     response.render('profile')
 
-// 	if (plainTextPassword.length < 5) {
-// 		return res.json({
-// 			status: 'error',
-// 			error: 'Password too small. Should be at least 6 characters'
-// 		})
-// 	}
+}
 
-// 	const password = await bcrypt.hash(plainTextPassword, 10)
+const get_noForm = async (request, response) => {
+    let feedLen = true
+    let form = 'No Form Create'
+    response.render('profile', {feedLen, mess: form} )
 
-// 	try {
-// 		const response = await User.create({
-// 			fullname,
-// 			email,
-// 			password
-// 		})
-// 		console.log('User created successfully: ', response)
-// 	} catch (error) {
-// 		if (error.code === 11000) {
-// 			// duplicate key
-// 			return res.json({ status: 'error', error: 'email already in use' })
-// 		}
-// 		throw error
-// 	}
+}
 
-// 	res.json({ status: 'ok' })
-// }
+const formResp = async (request, response) => {
+    const id = request.params.id
+    // console.log(request.params)
+    
+    const event = await EventFeedback.findById({_id: id})
+    const service = await ServiceFeedback.findById({_id: id})
+    const product = await ProductFeedback.findById({_id: id})
 
-// const userLogin = async (req, res) => {
-// 	const { email, password } = req.body
-// 	const user = await User.findOne({ email }).lean()
+    if(event) {
+        response.redirect(`/profile/eventresponse/${event._id}`)
+    }else if(service) {
+        response.redirect(`/profile/serviceresponse/${service._id}`)
+    }else{
+        response.redirect(`/profile/productresponse/${product._id}`)
+    }
+}
 
-// 	if (!user) {
-// 		return res.json({ status: 'error', error: 'Invalid email/password for user' })
-// 	}
+const get_eventResp =  async (request, response) => {
 
-// 	const signin = (await bcrypt.compare(password, user.password))
-// 		// the email, password combination is successful
+    // console.log(request.params)
+    
+    const usersResp = await eventResponse.find({ formId: request.params.id })
+    // console.log(usersResp)
 
-// 		if(!signin){
+    response.render('formresponsepage', { resp:{ usersResp}, event: 'Event'})
+}
 
-// 		const token = jwt.sign(
-// 			{
-// 				id: user._id,
-// 				email: user.email
-// 			},
-// 			JWT_SECRET
-// 		)
+const get_serviceResp = async (request, response) => {
 
-// 		return res.json({ status: 'ok', data: token })
-// 	}
+    const usersResp = await serviceResponse.find({ formId: request.params.id })
+    // console.log(usersResp)
 
-// 	res.json({ status: 'error', error: 'Invalid email/password credentials' })
-// }
+    response.render('formresponsepage', { resp:{ usersResp}, service: 'service'})
 
-// const changePassword = async (req, res) => {
-// 	const { token, newpassword: plainTextPassword } = req.body
+}
 
-// 	if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-// 		return res.json({ status: 'error', error: 'Invalid password' })
-// 	}
 
-// 	if (plainTextPassword.length < 5) {
-// 		return res.json({
-// 			status: 'error',
-// 			error: 'Password too small. Should be atleast 6 characters'
-// 		})
-// 	}
+const get_productResp = async (request, response) => {
 
-// 	try {
-// 		const user = jwt.verify(token, process.env.JWT_SECRET)
+    const usersResp = await productResponse.find({ formId: request.params.id })
+    // console.log(usersResp)
 
-// 		const _id = user.id
+    response.render('formresponsepage', { resp:{ usersResp}, product: 'product'})
 
-// 		const password = await bcrypt.hash(plainTextPassword, 10)
 
-// 		await User.updateOne(
-// 			{ _id },
-// 			{
-// 				$set: { password }
-// 			}
-// 		)
-// 		res.json({ status: 'ok' })
-// 	} catch (error) {
-// 		console.log(error)
-// 		res.json({ status: 'error', error: ';))' })
-// 	}
-// }
+}
+
 
 
 module.exports = {
 	get_signup,
 	post_signup,
 	get_login,
-	post_login
+	post_login,
+    get_profile,
+    get_noForm,
+    formResp,
+    get_eventResp,
+	get_serviceResp,
+	get_productResp
 }

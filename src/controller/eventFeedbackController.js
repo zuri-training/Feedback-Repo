@@ -28,10 +28,17 @@ const userRes = async (request, response) => {
             formId: eventFeedback._id
         })
 
-
         await userResp.save();
 
+        const allResp = await eventResponseShema.find({ formId: eventFeedback._id })
+
+        let length = allResp.length
+
+        const feedLen = await EventFeedbackSchema.findByIdAndUpdate({_id: eventFeedback._id }, {respNum: length})
+       
+        await feedLen.save()
         console.log(userResp)
+        console.log(feedLen)
 
         response.status(201).redirect('/profile')
     } catch (error) {

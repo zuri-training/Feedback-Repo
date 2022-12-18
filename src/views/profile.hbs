@@ -46,8 +46,8 @@
           />
 
           <div>
-            <p id="name">John Doe</p>
-            <p id="email">johndoe@gmail.com</p>
+          <p id="name">{{user.fullname}}</p>
+            <p id="email">{{user.email}}</p>
           </div>
 
           <div class="property">
@@ -73,29 +73,37 @@
           </div>
         </div>
       </div>
+      {{#if feedLen}}
+        <div class="forms-item-container">
+          <h1>{{mess}}</h1>
+        </div>
+      {{else}}       
+        {{#each feeds.allFeed}}
+        <div class="forms-item-container">
+          <div class="form-item">
+            <h3 class="form-title">{{this.formTitle}}</3>
+            <p class="form-description">Form Description</p>
 
-      <div class="forms-item-container">
-        <div class="form-item">
-          <p class="form-title">Form Title</p>
-          <p class="form-description">Form Description</p>
-
-          <div class="form-item-options">
+            <div class="form-item-options">
+              <div class="property">
+                <img src="/img/./profile/eye-open.png" />
+                <p>({{this.respNum}}) Viewed</p>
+              </div>
+              <div class="property">
+                <img width="24px" height="24px" src="/img/./profile/edit-contained.png" />
+                <p>({{this.respNum}}) Submitted</p>
+              </div>
             <div class="property">
-              <img src="/img/./profile/eye-open.png" />
-              <p>(90) Viewed</p>
+              <a href="/profile/{{this._id}}" style="text-decoration: none;"><button>Feedback</button></a>
             </div>
-            <div class="property">
-              <img width="24px" height="24px" src="/img/./profile/edit-contained.png" />
-              <p>(69) Submitted</p>
             </div>
-            
           </div>
         </div>
-      </div>
-
+        {{/each}}
+      {{/if}}
       <div class="notifications-container">
         <div class="greeting">
-          <p>Hi John!</p>
+          <p>Hi {{user.fullname}}</p>
           <img src="/img/./profile/greeting-illustration.png" />
         </div>
       </div>

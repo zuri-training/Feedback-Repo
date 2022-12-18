@@ -1,7 +1,6 @@
-const EventFeedbackSchema = require('../../src/models/eventFeedbackFormModel')
-const ProductFeedbackSchema = require('..//models/productFeedbackFormModel')
-const ServiceFeedbackSchema = require('../../src/models/serviceFeedbackFormModel')
-const { request, response } = require('../app')
+const EventFeedbackSchema = require('../models/eventFeedbackFormModel')
+const ProductFeedbackSchema = require('../models/productFeedbackFormModel')
+const ServiceFeedbackSchema = require('../models/serviceFeedbackFormModel')
 
 
 const post_createEventForm = async (request, response) => {
