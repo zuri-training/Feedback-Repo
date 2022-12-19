@@ -93,7 +93,10 @@ const get_profile = async (request, response) => {
         feedLen = allFeed.length
 
         if(feedLen === 0) {
-            response.redirect('/profile&%0')
+            const empty = [{
+                formTitle: 'No form created'
+            }]
+            allFeed = empty
         }
 
         let user = request.session.user
@@ -104,13 +107,6 @@ const get_profile = async (request, response) => {
     }
 
 //     response.render('profile')
-
-}
-
-const get_noForm = async (request, response) => {
-    let feedLen = true
-    let form = 'No Form Create'
-    response.render('profile', {feedLen, mess: form} )
 
 }
 
@@ -169,7 +165,6 @@ module.exports = {
 	get_login,
 	post_login,
     get_profile,
-    get_noForm,
     formResp,
     get_eventResp,
 	get_serviceResp,

@@ -5,7 +5,6 @@ const {
 	get_login,
 	post_login,
 	get_profile,
-	get_noForm,
 	formResp,
 	get_eventResp,
 	get_serviceResp,
@@ -20,7 +19,6 @@ router.post('/signup', post_signup);
 router.get('/login', get_login);
 router.post('/login', post_login);
 router.get('/profile', isAuth, get_profile)
-router.get('/profile&%0', isAuth, get_noForm)
 router.get('/profile/:id', formResp)
 router.get('/profile/eventresponse/:id', isAuth, get_eventResp)
 router.get('/profile/serviceresponse/:id', isAuth, get_serviceResp)
