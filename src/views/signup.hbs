@@ -26,7 +26,7 @@
     </header>
     <section>
         <a href="#" class="icon"><img src="/img/arrow.svg" alt=""></a>
-        <form id="reg-form" action="/signup" method="post">
+        <form id="reg-form" action="api/register" method="POST">
             <div class="container">
                 <div class="wrapper">
                     <div class="intro">Sign Up</div>
@@ -52,15 +52,12 @@
                         <input class="intro6" type="password" id="password" name="password" placeholder="***********"
                             required>
                         <input class="intro7" type="apple" id="apple" name="apple"
-                            placeholder="Sign in with Apple Account" required readonly>
+                            placeholder="Sign in with Apple Account" readonly>
                     </div>
-                    <p class="intro8">Confirm Password</p>
-                    <div class="new">
-                        <input class="intro6" type="password" id="password" name="password" placeholder="***********"
-                            required>
 
                         <div class="log">
-                            <a class="intro9" href="#">Login</a>
+                           <!-- <a class="intro9" href="#">Login</a> -->
+                            <input type="submit" value="Submit" class="intro9">
                         </div>
                         <div class="remind">
                             <div class="ready">Already a member?</div>

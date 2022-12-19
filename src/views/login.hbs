@@ -103,7 +103,7 @@
     </header>
     <section>
         <a href="/" class="icon"><img src="/img/arrow.svg" alt=""></a>
-        <form id="login" action="/login" method="post">
+        <form id="login" action="api/login" method="POST">
             <div class="container">
                 <div class="wrapper">
                     <div class="intro">Sign in</div>
@@ -124,8 +124,8 @@
                             placeholder="Sign in with Facebook" >
                     </div>
                     <div class="log">
-                       <!-- <a class="intro9" href="#" value="login">Login</a> -->
-                        <input type="submit" class="intro9" value="Login">
+                       <a class="intro9" href="#" value="login">Login</a>
+                       <!-- <input type="submit" class="intro9" value="Login"> -->
                         <input class="intro7" type="apple" id="apple" name="apple"
                             placeholder="Sign in with Apple Acct">
                     </div>
@@ -158,17 +158,17 @@
 
                 <section class="farms">
                     <input class="intro11" type="google" id="google" name="google" placeholder="Sign in with Google"
-                        required readonly>
+                        readonly>
                         
                     <input class="intro5" type="facebook" id="facebook" name="facebook"
-                    placeholder="Sign in with Facebook" required readonly>
+                    placeholder="Sign in with Facebook" readonly>
 
                     <input class="intro7" type="apple" id="apple" name="apple"
-                        placeholder="Sign in with Apple Account" required readonly>
+                        placeholder="Sign in with Apple Account" readonly>
                 </section>
             </div>
             
-
+   
         </form>
     </section>
     <footer>
