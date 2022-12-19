@@ -5,7 +5,6 @@ const ServiceFeedback = require('../models/serviceFeedbackFormModel')
 const serviceResponse = require('../models/serviceResponseModel')
 const ProductFeedback = require('../models/productFeedbackFormModel')
 const productResponse = require('../models/eventResponseModel')
-// const eventFeedbackFormModel = require('../models/eventFeedbackFormModel')
 
 
 // const JWT_SECRET='sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
@@ -32,7 +31,7 @@ const post_signup = async (request, response) => {
         response.status(201).redirect('/login')
     } catch (e) {
         response.redirect('/signup')
-        console.log(e)
+        // console.log(e)
     }
 }
 
@@ -52,14 +51,14 @@ const post_login = async (request, response) => {
         request.session.user = user;
         response.redirect('/profile')
     } catch (e) {
-        response.render('login',{
+        response.render('signin',{
             e: e
         })
     }
 }
 
 const get_profile = async (request, response) => {
-    let allFeed
+    let allFeed = []
     let feedLen
     try {
 
@@ -70,7 +69,7 @@ const get_profile = async (request, response) => {
             console.log('empty event')
         }else(
             
-            allFeed = event
+            allFeed.push(...event)
         )
 
         const service = await ServiceFeedback.find({ owner: request.session.user._id })
