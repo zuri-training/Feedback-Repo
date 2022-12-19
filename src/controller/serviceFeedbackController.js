@@ -27,6 +27,15 @@ const createServiceFeedbackForm = async (request, response) => {
                 Description: request.body.description,
                 formId: serviceFeedback._id,
             })
+
+
+            const allResp = await serviceResponseShema.find({ formId: eventFeedback._id })
+
+            let length = allResp.length
+    
+            const feedLen = await ServiceFeedbackSchema.findByIdAndUpdate({_id: eventFeedback._id }, {respNum: length})
+            await feedLen.save()
+
         response.status(201).redirect('/profile')
     } catch (error) {
         response.status(404).json({message: error})

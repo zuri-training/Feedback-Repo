@@ -27,6 +27,14 @@ const createProductFeedbackForm = async (request, response) => {
             Comment: request.body.comment,
             formId: productFeedback,
         })
+
+        const allResp = await productResponseShema.find({ formId: eventFeedback._id })
+
+        let length = allResp.length
+
+        const feedLen = await ProductFeedbackSchema.findByIdAndUpdate({_id: eventFeedback._id }, {respNum: length})
+        await feedLen.save()
+
          response.status(201).redirect('/profile')
         
     } catch (error) {

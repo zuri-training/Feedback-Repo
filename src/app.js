@@ -77,19 +77,13 @@ app.get('/detaileventfeedback', isAuth, (request, response) => {
     response.status(200).render('detaileventfeedback') 
 })
 
-app.get('/profile', isAuth, (request, response) => {
 
-    response.render('profile')
-})
-
-app.get('/customform', (request, response) => {
+app.get('/customform', isAuth, (request, response) => {
     response.render('customform')
 })
 
 
-app.get('/formresponsepage', isAuth, (request, response) => {
-    response.render('formresponsepage')
-})
+
 
 
 

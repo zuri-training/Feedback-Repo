@@ -188,81 +188,89 @@
     <main>
       <div class="options">
         <div class="options-list">
-          <a href="#" class="bottom-line">Back to form</a>
+          <a href="/profile" class="bottom-line">Back to form</a>
           <a href="#" class="bottom-line">Edit form</a>
           <a href="#">Share form</a>
+          <a href="#">Embed</a>
+
         </div>
       </div>
       <div class="list-response">
+        {{#if event}}
         <div class="table-container">
-            <p> Form Title</p>
+            <p> Event Response</p>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Rating</td>
+                        <td>Comment</td>
+                        <td>Date</td>
+                    </tr>
+                </thead>
+                <tbody>
+                  {{#each resp.usersResp}}
+                    <tr>
+                        <td>{{this.rating}}</td>
+                        <td>{{this.comment}}</td>
+                        <td>date</td>
+                        <td class="view-link"><a href="#">View Form</a></td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+
+            </table>
+        </div>
+        {{else}} {{#if service }}
+          <div class="table-container">
+              <p> Service</p>
+              <table>
+                  <thead>
+                      <tr>
+                          <td>Title</td>
+                          <td>Description</td>
+                          <td>Date</td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {{#each resp.usersResp}}
+                      <tr>
+                          <td>{{this.Title}}</td>
+                          <td>{{this.Description}}</td>
+                          <td>Date</td>
+                          <td class="view-link"><a href="#">View Form</a></td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+
+              </table>
+          </div>
+        {{else}}
+        <div class="table-container">
+            <p> Product Response</p>
             <table>
                 <thead>
                     <tr>
                         <td>Name</td>
-                        <td>Date Submited</td>
-                        <td></td>
+                        <td>Email</td>
+                        <td>Comment</td>
+                        <td>Date</td>
                     </tr>
                 </thead>
                 <tbody>
+                  {{#each resp.usersResp}}
                     <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
+                        <td>{{this.Name}}</td>
+                        <td>{{this.Email}}</td>
+                        <td>{{this.Comment}}</td>
+                        <td>date</td>
                         <td class="view-link"><a href="#">View Form</a></td>
                     </tr>
-                    <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
-                        <td class="view-link"><a href="#">View Form</a></td>
-                    </tr>
-                    <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
-                        <td class="view-link"><a href="#">View Form</a></td>
-                    </tr>
-                    <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
-                        <td class="view-link"><a href="#">View Form</a></td>
-                    </tr>
-                    <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
-                        <td class="view-link"><a href="#">View Form</a></td>
-                    </tr>
-                    <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
-                        <td class="view-link"><a href="#">View Form</a></td>
-                    </tr>
-                    <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
-                        <td class="view-link"><a href="#">View Form</a></td>
-                    </tr>
-                    <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
-                        <td class="view-link"><a href="#">View Form</a></td>
-                    </tr>
-                    <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
-                        <td class="view-link"><a href="#">View Form</a></td>
-                    </tr>
-                    <tr>
-                        <td>Stave Jackson</td>
-                        <td>12/5/2022</td>
-                        <td class="view-link"><a href="#">View Form</a></td>
-                    </tr>
+                  {{/each}}
                 </tbody>
-                <tfoot>
-                    <div class="pagination">
-                        <a href="#">1</a>
-                    </div>
-                </tfoot>
             </table>
         </div>
+        {{/if}}
+        {{/if}}
       </div>
     </main>
 
@@ -291,4 +299,5 @@
       </ul>
     </footer>
   </body>
+
 </html>
