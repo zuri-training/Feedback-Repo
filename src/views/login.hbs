@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -71,8 +71,125 @@
             <div><img src="/img/copyright.png" alt=""></div>
             <div>Poma Inc.</div>
         </div>
+    </footer> --}}
+
+
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signin page</title>
+    <!-- <link rel="stylesheet" href="signin.css"> -->
+    <link rel="stylesheet" href="/css/signin.css">
+    <link rel="shortcut icon" href="/icons/Poma.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <h2><a href="/" class="logo"><img src="/icons/Poma.svg" alt=""></a></h2>
+        <div class="navigation">
+            <a href="/">Home</a>
+            <a href="#">Services</a>
+            <a href="/feedback">Templates</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <a href="/login" class="start">Log in</a>
+        <a href="/signup" class="click">Register</a>
+    </header>
+    <section>
+        <a href="/" class="icon"><img src="/img/arrow.svg" alt=""></a>
+        <form id="login" action="/login" method="post">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="intro">Sign in</div>
+                    <div class="intro2">Hey, Enter your details to get access to your</div>
+                    <div class="intro3">account</div>
+                    <p class="intro1">Email</p>
+                    <div class="mail">
+                        <input class="intro4" type="email" id="email" name="email" placeholder="johndeo@gmail.com"
+                            required>
+                        <input class="intro5" type="google" id="google" name="google" placeholder="Sign in with Google"
+                            required>
+                    </div>
+                    <p class="intro8">Password</p>
+                    <div class="pass">
+                        <input class="intro6" type="password" id="password" name="password" placeholder="***********"
+                            required>
+                        <input class="intro7" type="facebook" id="facebook" name="facebook"
+                            placeholder="Sign in with Facebook" required>
+                    </div>
+                    <div class="log">
+                       <!-- <a class="intro9" href="#" value="login">Login</a> -->
+                        <input type="submit" class="intro9" value="Login">
+                        <input class="intro7" type="apple" id="apple" name="apple"
+                            placeholder="Sign in with Apple Acct" required>
+                    </div>
+                    <div class="remind">
+                        <a class="ret" href="/change-password">Forgot Password?</a>
+                        <br><br>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="secx">
+                    
+                <section>
+
+                    <label for="email" class="intro1">Email</label>
+                    <input class="intro4" type="email" name="email" placeholder="johndeo@gmail.com"
+                        required id="email">
+                       
+                <label for="password" class="intro8">Password</label> 
+                    <input class="intro6" type="password" id="password" name="password" placeholder="***********"
+                        required>
+
+                        <div class="remind">
+                            <a class="ret" href="#">Forgot Password?</a>
+                            <br><br>
+                        </div>
+                        
+                </section>
+
+                <section class="farms">
+                    <input class="intro11" type="google" id="google" name="google" placeholder="Sign in with Google"
+                        required readonly>
+                        
+                    <input class="intro5" type="facebook" id="facebook" name="facebook"
+                    placeholder="Sign in with Facebook" required readonly>
+
+                    <input class="intro7" type="apple" id="apple" name="apple"
+                        placeholder="Sign in with Apple Account" required readonly>
+                </section>
+            </div>
+            
+
+        </form>
+    </section>
+    <footer>
+        <div class="details">
+            <a class="one" href="#">About</a>
+            <a class="two" href="#">Resources</a>
+            <a class="three" href="#">Team</a>
+            <a class="four" href="#">Contact</a>
+            <a class="five" href="#">Terms</a>
+        </div>
+        <div class="details2">
+            <div><img src="/img/footerinstagram.svg" alt=""></div>
+            <div><img src="/img/footerfacebook.svg" alt=""></div>
+            <div class="ment"><img src="/img/footertwitter.svg" alt="" style="width: 3rem; padding-top:10px;"></div>
+            <div><img src="/img/footermail.svg" alt=""></div>
+        </div>
+        <div class="details3">
+            <div>Copyright &nbsp; 2022 &nbsp; &copy; &nbsp; Poma Inc.</div>
+        </div>
     </footer>
-    {{!-- <script>
+  <script>
         const form = document.getElementById('login')
         form.addEventListener('submit', login)
 
@@ -100,7 +217,10 @@
                 alert(result.error)
             }
         }
-    </script> --}}
+    </script>
+
+
+
 </body>
 
 </html>
