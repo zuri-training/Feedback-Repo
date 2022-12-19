@@ -11,7 +11,7 @@ const productResponse = require('../models/eventResponseModel')
 // const JWT_SECRET='sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
 const get_signup = (request, response) => {
-    response.render('signup')
+    response.render('register')
 }
 
 const post_signup = async (request, response) => {
@@ -37,10 +37,11 @@ const post_signup = async (request, response) => {
 }
 
 const get_login = (request, response) => {
-    response.render('login')
+    response.render('signin')
 }
 
 const post_login = async (request, response) => {
+    // console.log(request.body)
     try {
         const user = await User.findByCredentials(request.body.email, request.body.password)
         if (!user){
