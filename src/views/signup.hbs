@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signup page</title>
+    <title>Poma</title>
     <link rel="stylesheet" href="/css/signup.css">
+    <link rel="shortcut icon" href="/icons/Poma.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 
@@ -24,44 +25,76 @@
         <a href="/signup" class="click">Register</a>
     </header>
     <section>
-        <a href="#" class="icon"><img src="/img/arrow.svg" alt=""></a>
-        <form id="reg-form" action="/signup" method="post">
+        <a href="/" class="icon"><img src="/img/arrow.svg" alt=""></a>
+        <form id="reg-form" action="api/register" method="POST">
             <div class="container">
                 <div class="wrapper">
                     <div class="intro">Sign Up</div>
                     <div class="intro2">Hey, Enter your details to get an account</div>
                     <div class="intro3">with us</div>
+
                     <p class="intro1">Full Name</p>
                     <div class="name">
-                        <input class="intro10" type="text" id="fullname" name="fullname" placeholder="John Deo" required>
+                        <input class="intro10" type="text" id="email" name="name" placeholder="John Deo" required>
                         <input class="intro11" type="google" id="google" name="google" placeholder="Sign in with Google"
-                            >
+                            required readonly>
                     </div>
+                    
                     <p class="intro1">Email</p>
                     <div class="mail">
                         <input class="intro4" type="email" id="email" name="email" placeholder="johndeo@gmail.com"
                             required>
                         <input class="intro5" type="facebook" id="facebook" name="facebook"
-                            placeholder="Sign in with Facebook" >
+                            placeholder="Sign in with Facebook" readonly>
                     </div>
                     <p class="intro8">Create Password</p>
                     <div class="pass">
                         <input class="intro6" type="password" id="password" name="password" placeholder="***********"
                             required>
                         <input class="intro7" type="apple" id="apple" name="apple"
-                            placeholder="Sign in with Apple Account" >
+                            placeholder="Sign in with Apple Account" readonly>
                     </div>
-                    <div class="new">
+
                         <div class="log">
-                            <button type="submit" class="intro9"> submit </button>
+                           <!-- <a class="intro9" href="#">Login</a> -->
+                            <input type="submit" value="Submit" class="intro9">
                         </div>
                         <div class="remind">
                             <div class="ready">Already a member?</div>
                             <a class="ret" href="/login">Log in</a>
+                            <br><br>
                         </div>
                     </div>
 
                 </div>
+                
+                <div class="secx">
+                    
+                    <section>
+                        <label for="name" class="intro1">Full Name</label>
+                        <input class="intro10" type="text" name="name" placeholder="John Deo" required id="name">
+
+                        <label for="email" class="intro1">Email</label>
+                        <input class="intro4" type="email" name="email" placeholder="johndeo@gmail.com"
+                            required id="email">
+                           
+                    <label for="password" class="intro8">Create Password</label> 
+                        <input class="intro6" type="password" id="password" name="password" placeholder="***********"
+                            required>
+                    </section>
+
+                    <section class="farms">
+                        <input class="intro11" type="google" id="google" name="google" placeholder="Sign in with Google"
+                         readonly>
+                            
+                        <input class="intro5" type="facebook" id="facebook" name="facebook"
+                        placeholder="Sign in with Facebook" readonly>
+
+                        <input class="intro7" type="apple" id="apple" name="apple"
+                            placeholder="Sign in with Apple Account" readonly>
+                    </section>
+                </div>
+    
         </form>
     </section>
     <footer>
@@ -75,16 +108,15 @@
         <div class="details2">
             <div><img src="/img/footerinstagram.svg" alt=""></div>
             <div><img src="/img/footerfacebook.svg" alt=""></div>
-            <div class="ment"><img src="/img/footertwitter.svg" alt=""></div>
+            <div class="ment"><img src="/img/footertwitter.svg" alt="" style="width: 3rem; padding-top:10px;"></div>
             <div><img src="/img/footermail.svg" alt=""></div>
         </div>
         <div class="details3">
-            <div>Copyright 2022</div>
-            <div><img src="/img/copyright.png" alt=""></div>
-            <div>Poma Inc.</div>
+            <div>Copyright &nbsp; 2022 &nbsp; &copy &nbsp; Poma Inc</div>
+            <!-- <div><img src="img/copyright.png" alt=""></div> -->
+            <!-- <div>Poma Inc.</div> -->
         </div>
     </footer>
-{{!-- 
     <script>
         const form = document.getElementById('reg-form')
         form.addEventListener('submit', registerUser)
@@ -114,8 +146,12 @@
                 alert(result.error)
             }
         }
-    </script> --}}
+    </script>
 
 </body>
 
 </html>
+
+
+    
+
