@@ -15,15 +15,24 @@ const get_signup = (request, response) => {
 }
 
 const post_signup = async (request, response) => {
-	// console.log(req.body)
+	// console.log(request.body)
     try {
-        const user = new User(request.body)
-        await user.save(function(err, user) {
-            if (err) response.redirect('/signup')
+        const user = await User.findOne({email: request.body.email})
+
+        if(user) {
+            response.redirect('/login')
+        }
+
+        await User.create({
+            fullname:request.body.fullname,
+            email: request.body.email,
+            password: request.body.password
         })
+       
         response.status(201).redirect('/login')
     } catch (e) {
         response.redirect('/signup')
+        console.log(e)
     }
 }
 
