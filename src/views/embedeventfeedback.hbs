@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embeded Event Feedback Page</title>
+    <link rel="stylesheet" href="/css/embedevent.css">
+</head>
+<body>
+    <div class="iframeContainer">
+    <iframe id="iframeEventForm" class="iframeContent" src="http://localhost:9999/detaileventfeedback" frameborder="0" scrolling="no"></iframe>
+</div>
+
+
+<script>
+    function embedForm(){
+        const eventForm = document.getElementById('iframeEventForm').src;
+           navigator.clipboard.writeText(eventForm)
+    }
+</script>
+
+        <button onclick="embedForm()">Copy the form link</button>
+    
+</body>
+</html>

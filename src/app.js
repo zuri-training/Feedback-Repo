@@ -86,6 +86,39 @@ app.get('/detaileventfeedback/:id', isAuth, (request, response) => {
     }) 
 })
 
+//routes that handles the embeded pages starts from here
+app.get('/embededservicefeedbackform', (request, response) => {
+    response.status(200).render('embedservicefeedback', {
+    }) 
+})
+
+app.get('/embededproductfeedbackform', (request, response) => {
+    response.status(200).render('embedproductfeedback', {
+    }) 
+})
+
+app.get('/embededeventfeedbackform', (request, response) => {
+    response.status(200).render('embedeventfeedback', {
+    }) 
+})
+
+app.get('/detailservicefeedback', (request, response) => {
+    response.status(200).render('detailservicefeedback', {
+    }) 
+})
+
+app.get('/detailproductfeedback', (request, response) => {
+    response.status(200).render('detailproductfeedback', {
+    }) 
+})
+
+
+app.get('/detaileventfeedback', (request, response) => {
+    response.status(200).render('detaileventfeedback', {
+    }) 
+})
+
+//routes that handles the embeded pages ends here
 
 app.get('/customform', isAuth, (request, response) => {
     response.render('customform')
