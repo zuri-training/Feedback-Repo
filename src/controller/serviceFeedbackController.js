@@ -5,7 +5,8 @@ const serviceResponseShema = require('../models/serviceResponseModel')
 const getAllServiceFeedBackForms = async (request, response) => {
     try {
         const serviceFeedback = await ServiceFeedbackSchema.find({})
-        response.status(200).json({serviceFeedback})
+        // response.status(200).json({serviceFeedback})
+        response.redirect('/profile')
     } catch (error) {
         response.status(500).json({serviceFeedback})
     }
@@ -13,13 +14,10 @@ const getAllServiceFeedBackForms = async (request, response) => {
 
  //  create a new service feedback form.
 const createServiceFeedbackForm = async (request, response) => {
+    // console.log(request.body)
     try {
-        let id = request.session.user._id
-        const serviceFeedback = await ServiceFeedbackSchema.findOne({owner: id })
-        
-        if(!serviceFeedback) {
-            console.error('form not found')
-        }
+        // let id = request.body.id
+        const serviceFeedback = await ServiceFeedbackSchema.findOne({_id: request.body.id })
         
         const userResp = await serviceResponseShema.create(
             {
@@ -29,16 +27,19 @@ const createServiceFeedbackForm = async (request, response) => {
             })
 
 
-            const allResp = await serviceResponseShema.find({ formId: eventFeedback._id })
+            const allResp = await serviceResponseShema.find({ formId: serviceFeedback._id })
 
             let length = allResp.length
     
-            const feedLen = await ServiceFeedbackSchema.findByIdAndUpdate({_id: eventFeedback._id }, {respNum: length})
+            const feedLen = await ServiceFeedbackSchema.findByIdAndUpdate({_id: serviceFeedback._id }, {respNum: length})
             await feedLen.save()
+
+            // console.log(userResp)
 
         response.status(201).redirect('/profile')
     } catch (error) {
-        response.status(404).json({message: error})
+        // response.status(404).json({message: error})
+        console.log(error)
     }
     
 }

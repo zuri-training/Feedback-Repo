@@ -133,15 +133,17 @@ const get_eventResp =  async (request, response) => {
     const usersResp = await eventResponse.find({ formId: request.params.id })
     // console.log(usersResp)
 
-    response.render('formresponsepage', { resp:{ usersResp}, event: 'Event'})
+    let formId = request.params.id
+    response.render('formresponsepage', { resp:{ usersResp}, event: 'Event', url: 'detaileventfeedback', id: formId})
 }
 
 const get_serviceResp = async (request, response) => {
 
     const usersResp = await serviceResponse.find({ formId: request.params.id })
     // console.log(usersResp)
+    let formId = request.params.id
 
-    response.render('formresponsepage', { resp:{ usersResp}, service: 'service'})
+    response.render('formresponsepage', { resp:{ usersResp}, service: 'service', url: 'detailservicefeedback', id: formId})
 
 }
 
@@ -150,8 +152,9 @@ const get_productResp = async (request, response) => {
 
     const usersResp = await productResponse.find({ formId: request.params.id })
     // console.log(usersResp)
+    let formId = request.params.id
 
-    response.render('formresponsepage', { resp:{ usersResp}, product: 'product'})
+    response.render('formresponsepage', { resp:{ usersResp}, product: 'product', url: 'detailproductfeedback', id: formId})
 
 
 }

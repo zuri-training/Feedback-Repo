@@ -5,7 +5,8 @@ const productResponseShema = require('../models/eventResponseModel')
 const getAllProductFeedBackForms = async (request, response) => {
     try {
         const feedback = await ProductFeedbackSchema.find({})
-        response.status(200).json({feedback})
+        // response.status(200).json({feedback})
+        response.redirect('/profile')
     } catch (error) {
         response.status(500).json({feedback})
     }
@@ -13,26 +14,24 @@ const getAllProductFeedBackForms = async (request, response) => {
 
  //  create a new product feedback form.
 const createProductFeedbackForm = async (request, response) => {
-    try {
-        let id = request.session.user._id
-        const productFeedback = await ProductFeedbackSchema.findOne({owner: id })
+    // console.log(request.body)
 
-        if(!productFeedback) {
-            console.error('form not found')
-        }
+    try {
+        // let id = request.session.user._id
+        const productFeedback = await ProductFeedbackSchema.findOne({_id: request.body.id })
 
         const feedback = await productResponseShema.create({
             Name: request.body.name,
             Email: request.body.email,
             Comment: request.body.comment,
-            formId: productFeedback,
+            formId: productFeedback._id,
         })
 
-        const allResp = await productResponseShema.find({ formId: eventFeedback._id })
+        const allResp = await productResponseShema.find({ formId: productFeedback._id })
 
         let length = allResp.length
 
-        const feedLen = await ProductFeedbackSchema.findByIdAndUpdate({_id: eventFeedback._id }, {respNum: length})
+        const feedLen = await ProductFeedbackSchema.findByIdAndUpdate({_id: productFeedback._id }, {respNum: length})
         await feedLen.save()
 
          response.status(201).redirect('/profile')
@@ -52,6 +51,7 @@ const getSingleProductFeedbackForm = async (request, response) => {
         return response.status(404).json({message: `No feedbackform with Id: ${feedbackID}`})
     }
     response.status(200).json({foundFeedback})
+    
     } catch (error) {
         response.status(500).json({message: error})
     }

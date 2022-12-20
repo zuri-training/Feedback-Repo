@@ -16,7 +16,7 @@
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="#">Our Services</a></li>
-        <li><a href="#">Templates</a></li>
+        <li><a href="/feedback">Templates</a></li>
         <li><a href="#">About us</a></li>
         <li><a href="#">Contact us</a></li>
       </ul>
@@ -78,11 +78,12 @@
           <h1>{{mess}}</h1>
         </div>
       {{else}}       
-        {{#each feeds.allFeed}}
+        
         <div class="forms-item-container">
-          <div class="form-item">
-            <h3 class="form-title">{{this.formTitle}}</3>
-            <p class="form-description">Form Description</p>
+          {{#each feeds.allFeed}}
+          <div class="form-item" style="display: block;">
+            <h3 class="form-title">Forms</3>
+            <p class="form-description">{{this.formTitle}}</p>
 
             <div class="form-item-options">
               <div class="property">
@@ -98,8 +99,9 @@
             </div>
             </div>
           </div>
+          {{/each}}
         </div>
-        {{/each}}
+        
       {{/if}}
       <div class="notifications-container">
         <div class="greeting">

@@ -27,6 +27,7 @@ const post_createEventForm = async (request, response) => {
 }
 
 const post_createServiceForm = async (request, response) => {
+
     try {
         let id = request.session.user._id
         const service = await ServiceFeedbackSchema.findOne({formTitle: 'Service Feedback'})
@@ -40,8 +41,10 @@ const post_createServiceForm = async (request, response) => {
             owner: id
         })
 
+        let formId = form._id
+
         await form.save()
-        response.redirect('/detailservicefeedback')
+        response.redirect('/detailservicefeedback/'+formId)
     } catch (error) {
         console.log(error)
     }
@@ -64,7 +67,9 @@ const post_createProductForm = async (request, response) => {
         })
 
         await form.save()
-        response.redirect('/detailservicefeedback')
+
+        let formId = form._id
+        response.redirect('/detailproductfeedback/'+formId)
     } catch (error) {
         console.log(error)
     }

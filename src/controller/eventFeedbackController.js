@@ -5,7 +5,8 @@ const eventResponseShema = require('../models/eventResponseModel')
 const getAllEventFeedBackForms = async (request, response) => {
     try {
         const feedback = await EventFeedbackSchema.find({})
-        response.status(200).json({feedback})
+        // response.status(200).json({feedback})
+        response.redirect('/profile')
     } catch (error) {
         response.status(500).json({feedback})
     }
@@ -16,12 +17,8 @@ const userRes = async (request, response) => {
     console.log(request.body)
     try {
         
-        let id = request.session.user._id
-        const eventFeedback = await EventFeedbackSchema.findOne({owner: id })
-
-        if(!eventFeedback) {
-            console.error('form not found')
-        }
+        // let id = request.session.user._id
+        const eventFeedback = await EventFeedbackSchema.findOne({_id: request.body.id })
 
         const userResp = new eventResponseShema({
             ...request.body,
@@ -37,8 +34,8 @@ const userRes = async (request, response) => {
         const feedLen = await EventFeedbackSchema.findByIdAndUpdate({_id: eventFeedback._id }, {respNum: length})
        
         await feedLen.save()
-        console.log(userResp)
-        console.log(feedLen)
+        // console.log(userResp)
+        // console.log(feedLen)
 
         response.status(201).redirect('/profile')
     } catch (error) {
