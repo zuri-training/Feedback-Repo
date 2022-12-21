@@ -124,24 +124,25 @@
 
 <body>
     <header>
-        <h2><a href="#" class="logo"><img src="icons/Poma.svg" alt=""></a></h2>
+        <h2><a href="/" class="logo"><img src="icons/Poma.svg" alt=""></a></h2>
         <div class="navigation">
-            <a href="#">Home</a>
+            <a href="/">Home</a>
             <a href="#">Services</a>
-            <a href="#">Templates</a>
+            <a href="/feedback">Templates</a>
             <a href="#">About Us</a>
             <a href="#">Contact Us</a>
         </div>
-        <a href="#" class="start">Log in</a>
-        <a href="#" class="click">Register</a>
+        <a href="/login" class="start">Log in</a>
+        <a href="/signup" class="click">Register</a>
     </header>
     <section>
         <a href="#" class="icon"><img src="/img/arrow.svg" alt=""></a>
-        <form action="">
+        <form action="/login" method="post" id="login">
             <div class="container">
                 <div class="wrapper">
                     <div class="intro">Sign in</div>
                     <div class="intro2">Hey, Enter your details to get access to your</div>
+                    <p>{{e}}</p>
                     <div class="intro3">account</div>
                     <p class="intro1">Email</p>
                     <div class="mail">
@@ -163,7 +164,7 @@
                             placeholder="Sign in with Apple Acct" required>
                     </div>
                     <div class="remind">
-                        <a class="ret" href="#">Forgot Password?</a>
+                        <a class="ret" href="/forgotPassword">Forgot Password?</a>
                         <br><br>
                     </div>
                 </div>
