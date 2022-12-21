@@ -6,7 +6,7 @@ const ServiceFeedbackSchema = require('../models/serviceFeedbackFormModel')
 const post_createEventForm = async (request, response) => {
     try {
         let id = request.session.user._id
-        const event = await EventFeedbackSchema.findOne({formTitle: 'Event Feedback'})
+        const event = await EventFeedbackSchema.findOne({owner: id})
 
         if(event) {
             response.redirect('/profile')
@@ -18,7 +18,9 @@ const post_createEventForm = async (request, response) => {
         })
 
         await form.save()
-        response.redirect('/detaileventfeedback')
+
+        let formId = form._id
+        response.redirect(`/detaileventfeedback${formId}`)
     } catch (error) {
         console.log(error)
     }
@@ -30,7 +32,7 @@ const post_createServiceForm = async (request, response) => {
 
     try {
         let id = request.session.user._id
-        const service = await ServiceFeedbackSchema.findOne({formTitle: 'Service Feedback'})
+        const service = await ServiceFeedbackSchema.findOne({owner: id})
 
         if(service) {
             response.redirect('/profile')
@@ -44,7 +46,7 @@ const post_createServiceForm = async (request, response) => {
         let formId = form._id
 
         await form.save()
-        response.redirect('/detailservicefeedback/'+formId)
+        response.redirect(`/detailservicefeedback/${formId}`)
     } catch (error) {
         console.log(error)
     }
@@ -55,7 +57,7 @@ const post_createProductForm = async (request, response) => {
 
     try {
         let id = request.session.user._id
-        const product = await ProductFeedbackSchema.findOne({formTitle: 'Service Feedback'})
+        const product = await ProductFeedbackSchema.findOne({owner: id})
 
         if(product) {
             response.redirect('/profile')
@@ -69,7 +71,7 @@ const post_createProductForm = async (request, response) => {
         await form.save()
 
         let formId = form._id
-        response.redirect('/detailproductfeedback/'+formId)
+        response.redirect(`/detailproductfeedback/${formId}`)
     } catch (error) {
         console.log(error)
     }

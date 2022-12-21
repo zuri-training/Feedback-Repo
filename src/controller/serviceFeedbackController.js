@@ -6,7 +6,7 @@ const getAllServiceFeedBackForms = async (request, response) => {
     try {
         const serviceFeedback = await ServiceFeedbackSchema.find({})
         // response.status(200).json({serviceFeedback})
-        response.redirect('/profile')
+        response.redirect('/')
     } catch (error) {
         response.status(500).json({serviceFeedback})
     }
@@ -36,7 +36,7 @@ const createServiceFeedbackForm = async (request, response) => {
 
             // console.log(userResp)
 
-        response.status(201).redirect('/profile')
+        response.status(201).redirect('/detailservicefeedback/'+feedLen._id)
     } catch (error) {
         // response.status(404).json({message: error})
         console.log(error)

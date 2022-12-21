@@ -21,7 +21,13 @@
     <label for="titleInput"><input type="text" id="titleInput" name="title" placeholder="Enter the title of your feedback"></label>
     <input type="hidden" name="id" value="{{formId}}">
          <textarea name="description" class="serviceInput" placeholder="Describe your feedback in detail here"></textarea> <br>
-        <button>Submit your feedback</button>
+        <button onclick="myfunc()">Submit your feedback</button>
     </form>
+
+    <script>
+        function myfunc() {
+            alert('Your feedback received successfuly')
+        }
+    </script>
 </body>
 </html>

@@ -65,21 +65,21 @@ app.get('/feedback', isAuth, (request, response) => {
     response.status(200).render('feedback')
 })
 
-app.get('/detailproductfeedback/:id', isAuth, (request, response) => {
+app.get('/detailproductfeedback/:id', (request, response) => {
     let id = request.params.id
     response.status(200).render('detailproductfeedback', {
         formId: id
     })
 })
 
-app.get('/detailservicefeedback/:id', isAuth, (request, response) => {
+app.get('/detailservicefeedback/:id', (request, response) => {
     let id = request.params.id
     response.status(200).render('detailservicefeedback', {
         formId: id
     }) 
 })
 
-app.get('/detaileventfeedback/:id', isAuth, (request, response) => {
+app.get('/detaileventfeedback/:id', (request, response) => {
     let id = request.params.id
     response.status(200).render('detaileventfeedback', {
         formId: id
