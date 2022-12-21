@@ -125,7 +125,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poma</title>
-    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="./css/signup.css">
     <link rel="shortcut icon" href="icons/Poma.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
@@ -134,18 +134,18 @@
     <header>
         <h2><a href="#" class="logo"><img src="/img/Poma.svg" alt=""></a></h2>
         <div class="navigation">
-            <a href="#">Home</a>
+            <a href="/">Home</a>
             <a href="#">Services</a>
-            <a href="#">Templates</a>
+            <a href="/feedback">Templates</a>
             <a href="#">About Us</a>
             <a href="#">Contact Us</a>
         </div>
-        <a href="#" class="start">Log in</a>
-        <a href="#" class="click">Register</a>
+        <a href="/login" class="start">Log in</a>
+        <a href="/signup" class="click">Register</a>
     </header>
     <section>
         <a href="#" class="icon"><img src="/img/arrow.svg" alt=""></a>
-        <form action="">
+        <form id="reg-form" action="/signup" method="post">
             <div class="container">
                 <div class="wrapper">
                     <div class="intro">Sign Up</div>
@@ -154,7 +154,7 @@
 
                     <p class="intro1">Full Name</p>
                     <div class="name">
-                        <input class="intro10" type="text" id="email" name="name" placeholder="John Deo" required>
+                        <input class="intro10" type="text"  id="fullname" name="fullname" placeholder="John Deo" required>
                         <input class="intro11" type="google" id="google" name="google" placeholder="Sign in with Google"
                             required readonly>
                     </div>
@@ -183,7 +183,7 @@
                         </div>
                         <div class="remind">
                             <div class="ready">Already a member?</div>
-                            <a class="ret" href="#">Log in</a>
+                            <a class="ret" href="/login">Log in</a>
                             <br><br>
                         </div>
                     </div>
@@ -193,8 +193,9 @@
                 <div class="secx">
                     
                     <section>
-                        <label for="name" class="intro1">Full Name</label>
-                        <input class="intro10" type="text" name="name" placeholder="John Deo" required id="name">
+                    <form id="reg-form" action="/signup" method="post">
+                        <label for="fullname" class="intro1">Full Name</label>
+                        <input class="intro10" type="text" id="fullname" name="fullname" placeholder="John Deo" required>
 
                         <label for="email" class="intro1">Email</label>
                         <input class="intro4" type="email" name="email" placeholder="johndeo@gmail.com"
@@ -218,6 +219,12 @@
 
                         <input class="intro7" type="apple" id="apple" name="apple"
                             placeholder="Sign in with Apple Account" required readonly>
+                            </form>
+                            
+                        <div class="remind">
+                            <div class="ready">Already a member?</div>
+                            <a class="ret" href="/login">Log in</a>
+                        </div>
                     </section>
                 </div>
                 
