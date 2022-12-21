@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/embedservice.css">
+    <title>Service Feedback Form Embed Page</title>
+</head>
+<body>
+    <div class="iframeContainer">
+    <iframe id="iframeServiceForm" class="iframeContent" src="http://localhost:9999/detailservicefeedback" frameborder="0" scrolling="no"></iframe>
+</div>
+
+
+<script>
+    function embedForm(){
+        const serviceForm = document.getElementById('iframeServiceForm').src;
+           navigator.clipboard.writeText(serviceForm)
+    }
+</script>
+
+        <button onclick="embedForm()">Copy the form link</button>
+</body>
+</html>

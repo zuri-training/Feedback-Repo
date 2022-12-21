@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Productfeedback form page</title>
+    <link rel="stylesheet" href="/css/embedproduct.css">
+</head>
+<body>
+    <div class="iframeContainer">
+    <iframe id="iframeProductForm" class="iframeContent" src="http://localhost:9999/detailproductfeedback" frameborder="0" scrolling="no"></iframe>
+</div>
+
+
+<script>
+    function embedForm(){
+        const productFeedbackForm = document.getElementById('iframeProductForm').src;
+           navigator.clipboard.writeText(productFeedbackForm)
+    }
+</script>
+
+        <button onclick="embedForm()">Copy the form link</button>
+    
+</body>
+</html>
