@@ -364,7 +364,7 @@ footer {
 
 /* this style is for small screen  */
 .secx{
-    display: block;
+    display: none;
 }
 
 /* script for media query for 1200px, 992px, 768px and 600px screens */
