@@ -17,7 +17,13 @@
     <label for="titleInput"><input type="number" id="titleInput" name="rating" placeholder="Enter your rating number here" required></label>
     <input type="hidden" name="id" value="{{formId}}">
          <textarea name="comment" class="serviceInput" placeholder="Describe your event feedback in detail here" required></textarea> <br>
-        <button>Submit your feedback</button>
+        <button onclick="myfunc()">Submit your feedback</button>
     </form>
+
+    <script>
+        function myfunc() {
+            alert('Your feedback received successfuly')
+        }
+    </script>
 </body>
 </html>

@@ -6,7 +6,7 @@ const getAllProductFeedBackForms = async (request, response) => {
     try {
         const feedback = await ProductFeedbackSchema.find({})
         // response.status(200).json({feedback})
-        response.redirect('/profile')
+        response.redirect('/')
     } catch (error) {
         response.status(500).json({feedback})
     }
@@ -34,7 +34,7 @@ const createProductFeedbackForm = async (request, response) => {
         const feedLen = await ProductFeedbackSchema.findByIdAndUpdate({_id: productFeedback._id }, {respNum: length})
         await feedLen.save()
 
-         response.status(201).redirect('/profile')
+         response.status(201).redirect('/detailproductfeedback/'+feedLen._id)
         
     } catch (error) {
         response.status(404).json({message: error})

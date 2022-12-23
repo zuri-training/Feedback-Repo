@@ -22,8 +22,14 @@
                 <label for="commentInput">
                 <textarea name="comment" id="commentInput" cols="130" rows="10"></textarea>
                 </label>
-                <button type="submit" id="claim">Create Product Feedback</button>
+                <button type="submit" id="claim" onclick="myfunc()">submit Feedback</button>
                 <p id="register-second-text">By clicking the button, you agreeing to our <span id="terms"><strong>Terms and Serivces</strong></span></p>
               </form>
+
+    <script>
+        function myfunc() {
+            alert('Your feedback received successfuly')
+        }
+    </script>
 </body>
 </html>

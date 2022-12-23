@@ -6,7 +6,7 @@ const getAllEventFeedBackForms = async (request, response) => {
     try {
         const feedback = await EventFeedbackSchema.find({})
         // response.status(200).json({feedback})
-        response.redirect('/profile')
+        response.redirect('/')
     } catch (error) {
         response.status(500).json({feedback})
     }
@@ -14,7 +14,7 @@ const getAllEventFeedBackForms = async (request, response) => {
 
  //  storing participant response.
 const userRes = async (request, response) => {
-    console.log(request.body)
+    // console.log(request.body)
     try {
         
         // let id = request.session.user._id
@@ -37,7 +37,7 @@ const userRes = async (request, response) => {
         // console.log(userResp)
         // console.log(feedLen)
 
-        response.status(201).redirect('/profile')
+        response.status(201).redirect('/detaileventfeedback/'+feedLen._id)
     } catch (error) {
         console.log(error)
     }
